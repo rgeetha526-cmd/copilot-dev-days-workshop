@@ -36,6 +36,31 @@ const QUESTIONS = [
     ],
     answer: 1,
   },
+  {
+    question: "What is the primary purpose of a `.gitignore` file?",
+    options: [
+      "To ignore specific files when committing changes",
+      "To ignore all files in the repository",
+      "To ignore only untracked files", 
+      "To ignore files in a specific branch"
+    ],
+    answer: 0,
+  },
+  {
+    question: "Which command stages all changes in the current directory for the next commit?",
+    options: ["git add .", "git commit -m", "git push", "git status"],
+    answer: 0,
+  },
+  {
+    question: "What is the purpose of a pull request on GitHub?",
+    options: [
+      "To request changes to be merged into a repository",
+      "To pull the latest changes from a remote repository",
+      "To create a new branch in a repository",
+      "To delete a repository"
+    ],
+    answer: 0,
+  }
 ];
 
 // Lets Node.js tests load this file. Browsers ignore this block.

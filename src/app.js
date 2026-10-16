@@ -8,7 +8,7 @@ const resultScreen = document.getElementById("result-screen");
 const progressText = document.getElementById("progress");
 const questionText = document.getElementById("question-text");
 const optionsList = document.getElementById("options");
-const feedbackText = document.getElementById("feedback");
+const answerFeedback = document.getElementById("feedback");
 const nextButton = document.getElementById("next-btn");
 const scoreText = document.getElementById("score-text");
 const gradeText = document.getElementById("grade-text");
@@ -31,7 +31,7 @@ function renderQuestion() {
   const question = state.questions[state.current];
   progressText.textContent = `Question ${state.current + 1} of ${state.questions.length}`;
   questionText.textContent = question.question;
-  feedbackText.textContent = "";
+  answerFeedback.textContent = "";
   nextButton.hidden = true;
   optionsList.innerHTML = "";
 
@@ -54,11 +54,11 @@ function selectAnswer(selectedIndex, selectedButton) {
   if (isCorrect(question, selectedIndex)) {
     state.score++;
     selectedButton.classList.add("correct");
-    feedbackText.textContent = "Correct!";
+    answerFeedback.textContent = "Correct!";
   } else {
     selectedButton.classList.add("wrong");
     buttons[question.answer].classList.add("correct");
-    feedbackText.textContent = "Not quite. The correct answer is highlighted.";
+    answerFeedback.textContent = "Not quite. The correct answer is highlighted.";
   }
 
   nextButton.hidden = false;
@@ -79,6 +79,7 @@ function showResults() {
   const percentage = calculatePercentage(state.score, total);
   scoreText.textContent = `You scored ${state.score} out of ${total} (${percentage}%)`;
   gradeText.textContent = `Grade: ${getGrade(percentage)}`;
+  document.getElementById("feedback-message").textContent = getFeedbackMessage(getGrade(percentage));
   showScreen(resultScreen);
 }
 
