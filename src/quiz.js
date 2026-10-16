@@ -22,6 +22,61 @@ function isCorrect(question, selectedIndex) {
 }
 
 /**
+ * Creates the initial state for a quiz.
+ */
+function createQuiz(questions) {
+  if (!Array.isArray(questions)) {
+    throw new TypeError("questions must be an array");
+  }
+
+  return { questions, current: 0, score: 0, answered: false };
+}
+
+/**
+ * Returns the updated state after answering the current question.
+ */
+function answerQuestion(state, selectedIndex) {
+  if (!state || !Array.isArray(state.questions)) {
+    throw new TypeError("state must be a quiz state");
+  }
+  if (state.answered) {
+    return { state, correct: false };
+  }
+
+  const correct = isCorrect(state.questions[state.current], selectedIndex);
+  return {
+    state: {
+      ...state,
+      score: state.score + (correct ? 1 : 0),
+      answered: true,
+    },
+    correct,
+  };
+}
+
+/**
+ * Advances to the next question without changing the existing state.
+ */
+function advanceQuestion(state) {
+  if (!state || !Array.isArray(state.questions)) {
+    throw new TypeError("state must be a quiz state");
+  }
+
+  return { ...state, current: state.current + 1, answered: false };
+}
+
+/**
+ * Returns true when there are no more questions to display.
+ */
+function isQuizFinished(state) {
+  if (!state || !Array.isArray(state.questions)) {
+    throw new TypeError("state must be a quiz state");
+  }
+
+  return state.current >= state.questions.length;
+}
+
+/**
  * Formats the remaining quiz time for display.
  */
 function formatTimeLeft(seconds) {
@@ -63,5 +118,16 @@ function getFeedbackMessage(grade) {
 
 // Lets Node.js tests load this file. Browsers ignore this block.
 if (typeof module !== "undefined" && module.exports) {
-  module.exports = { shuffle, isCorrect, formatTimeLeft, calculatePercentage, getGrade, getFeedbackMessage };
+  module.exports = {
+    shuffle,
+    isCorrect,
+    createQuiz,
+    answerQuestion,
+    advanceQuestion,
+    isQuizFinished,
+    formatTimeLeft,
+    calculatePercentage,
+    getGrade,
+    getFeedbackMessage,
+  };
 }
