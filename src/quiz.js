@@ -41,9 +41,9 @@ function calculatePercentage(score, total) {
  * A = 90% or more, B = 75% or more, C = 50% or more.
  */
 function getGrade(percentage) {
-  if (percentage > 90) return "A";
-  if (percentage > 75) return "B";
-  if (percentage > 50) return "C";
+  if (percentage >= 90) return "A";
+  if (percentage >= 75) return "B";
+  if (percentage >= 50) return "C";
   return "Keep practicing";
 }
 
