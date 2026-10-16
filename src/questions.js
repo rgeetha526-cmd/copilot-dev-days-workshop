@@ -60,6 +60,21 @@ const QUESTIONS = [
       "To delete a repository"
     ],
     answer: 0,
+  },
+  {
+    question: "Where are GitHub Actions workflow files stored?",
+    options: ["in the repository root", "in the .github directory", "in the actions directory", "in .github/workflows"],
+    answer: 3,
+  },
+  {
+    question: "What does `runs-on` define for a GitHub Actions job?",
+    options: ["The job's timeout", "The workflow trigger", "The runner environment", "The job's dependencies"],
+    answer: 2,
+  },
+  {
+    question: "Which event can trigger a workflow when a pull request is opened?",
+    options: ["push", "pull_request", "workflow_dispatch", "schedule"],
+    answer: 1,
   }
 ];
 
