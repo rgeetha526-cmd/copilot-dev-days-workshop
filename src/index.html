@@ -11,6 +11,8 @@
     <section id="start-screen">
       <h1>Dev Days Quiz</h1>
       <p class="lead">Twelve quick questions about Git, GitHub and Copilot.</p>
+      <p id="start-best-score" class="best-score" hidden></p>
+      <p id="start-storage-notice" class="storage-notice" role="status" aria-live="polite" hidden></p>
       <button id="start-btn" class="primary">Start quiz</button>
     </section>
 
@@ -28,6 +30,9 @@
       <p id="score-text" class="lead"></p>
       <p id="grade-text"></p>
       <p id="feedback-message"></p>
+      <p id="result-new-best" class="new-best" role="status" aria-live="polite" hidden>New best score!</p>
+      <p id="result-best-score" class="best-score" hidden></p>
+      <p id="result-storage-notice" class="storage-notice" role="status" aria-live="polite" hidden></p>
       <button id="restart-btn" class="primary">Play again</button>
     </section>
   </main>
